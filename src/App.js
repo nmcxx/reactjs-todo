@@ -31,15 +31,16 @@ import TodoListItem from './components/TodoListItem';
 // }
 
 function App() {
-  const pr = {
-    check: true,
+  const item = {
+    todo: "a",
+    isCheck: true,
   };
   return (
     <div className="container">
       <div className="row">
             <div className="col-sm ">
             <TodoListAdd />
-            <TodoListItem isCheck={pr.check} />
+            <TodoListItem item={item} />
             </div>
       </div>
     </div>
