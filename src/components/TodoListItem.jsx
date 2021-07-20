@@ -9,14 +9,14 @@ export default function TodoListItem(props){
                         
                         <div className="input-group-text form-control">
                             
-                            <div classNames="input-group-prepend">
-                                <div classNames="input-group-text">
+                            <div className="input-group-prepend">
+                                <div className="input-group-text">
                                 <input type="checkbox" aria-label="Checkbox for following text input" defaultChecked={item.isCheck ? "checked":""}/>
                                 </div>
                             </div>
                             <span className="input-group-text form-control" style={{textDecoration: item.isCheck ? "line-through" : "none"}}>{item.todo}</span>
                             
-                            <button type="button" class="close" aria-label="Close">
+                            <button type="button" className="close" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>

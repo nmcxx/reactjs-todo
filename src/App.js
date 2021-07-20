@@ -1,8 +1,9 @@
 // import logo from './logo.svg';
 import './App.css';
 import "bootstrap/dist/css/bootstrap.css";
-import TodoListAdd from './components/TodoListAdd';
-import TodoListItem from './components/TodoListItem';
+// import TodoListAdd from './components/TodoListAdd';
+// import TodoListItem from './components/TodoListItem';
+import TodoList from './components/TodoList';
 
 // function App() {
 //   return (
@@ -43,22 +44,7 @@ function App() {
   },
 ]
   return (
-    <div className="container">
-      <div className="row">
-            <div className="col-sm ">
-            <TodoListAdd />
-            <div className="card">
-              <ul className="list-group list-group-flush">
-                {item.map((it) => (
-                  
-                  <TodoListItem item={it} />
-                ))}
-              </ul>
-            </div>
-            {/* <TodoListItem item={item} /> */}
-            </div>
-      </div>
-    </div>
+    <TodoList items={item}/>
   );
 }
 
