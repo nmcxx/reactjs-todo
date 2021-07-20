@@ -31,16 +31,31 @@ import TodoListItem from './components/TodoListItem';
 // }
 
 function App() {
-  const item = {
+  const item = [{
+    id: 1,
     todo: "a",
     isCheck: true,
-  };
+  },
+  {
+    id: 2,
+    todo: "b",
+    isCheck: false,
+  },
+]
   return (
     <div className="container">
       <div className="row">
             <div className="col-sm ">
             <TodoListAdd />
-            <TodoListItem item={item} />
+            <div className="card">
+              <ul className="list-group list-group-flush">
+                {item.map((it) => (
+                  
+                  <TodoListItem item={it} />
+                ))}
+              </ul>
+            </div>
+            {/* <TodoListItem item={item} /> */}
             </div>
       </div>
     </div>
