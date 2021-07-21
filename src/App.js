@@ -33,18 +33,18 @@ import TodoList from './components/TodoList';
 
 function App() {
   const item = [{
-    id: 1,
+    id: Date.now(),
     todo: "a",
     isCheck: true,
   },
   {
-    id: 2,
+    id: Date.now(),
     todo: "b",
     isCheck: false,
   },
 ]
   return (
-    <TodoList items={item}/>
+    <TodoList props={item}/>
   );
 }
 

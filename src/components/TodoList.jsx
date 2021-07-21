@@ -1,9 +1,22 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import TodoListItem from "./TodoListItem";
+
+const STORAGE_KEY = "React_Todo_App";
 
 function TodoList(){
     const [items, setTodoList] = useState([]);
     const [todoName, setTodoName] = useState("");
+
+    useEffect(() => {
+        const storagedTodoList = localStorage.getItem(STORAGE_KEY);
+        if (storagedTodoList) {
+          setTodoList(JSON.parse(storagedTodoList));
+        }
+      }, []);
+
+      useEffect(() => {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+      }, [items]);
 
     const onAddBtnClick = (e) =>{
         if(todoName==='') return;
@@ -11,8 +24,17 @@ function TodoList(){
             { id: Date.now(), todo: todoName, isCheck: false },
             ...items,
           ]);
+          console.log(items);
     };
 
+    const onStatusCheck = useCallback((id) => {
+        setTodoList((prevState) =>
+          prevState.map((todo) =>
+            todo.id === id ? ( todo.isCheck===true ? { ...todo, isCheck: false } : { ...todo, isCheck: true } ): todo
+            )
+        );
+    }, []);
+    
     return(
         <div className="container">
             <div className="row">
@@ -34,7 +56,7 @@ function TodoList(){
                 <ul className="list-group list-group-flush">
                     {items.map((item) => (
                     
-                    <TodoListItem key={item.id} item={item} />
+                    <TodoListItem key={item.id} item={item} onStatusCheck={onStatusCheck}/>
                     ))}
                 </ul>
                 </div>
