@@ -1,7 +1,7 @@
 import React from "react";
 // import TodoList from "./TodoList";
 
-export default function TodoListItem({item, onStatusCheck}){
+export default function TodoListItem({item, onStatusCheck, onDeleteBtnClick}){
     // const { item } = props;
 
     
@@ -18,7 +18,7 @@ export default function TodoListItem({item, onStatusCheck}){
                             </div>
                             <span className="input-group-text form-control" style={{textDecoration: item.isCheck ? "line-through" : "none"}}>{item.todo}</span>
                             
-                            <button type="button" className="close" aria-label="Close" >
+                            <button type="button" className="close" aria-label="Close" onClick={() => onDeleteBtnClick(item.id)}>
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>

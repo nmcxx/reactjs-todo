@@ -34,6 +34,12 @@ function TodoList(){
             )
         );
     }, []);
+
+    const onDeleteBtnClick = useCallback((id) => {
+        setTodoList((prevState) =>
+            prevState.filter(item => item.id !== id)
+        );
+    }, []);
     
     return(
         <div className="container">
@@ -56,7 +62,7 @@ function TodoList(){
                 <ul className="list-group list-group-flush">
                     {items.map((item) => (
                     
-                    <TodoListItem key={item.id} item={item} onStatusCheck={onStatusCheck}/>
+                    <TodoListItem key={item.id} item={item} onStatusCheck={onStatusCheck} onDeleteBtnClick={onDeleteBtnClick}/>
                     ))}
                 </ul>
                 </div>
