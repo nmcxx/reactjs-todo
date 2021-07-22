@@ -1,10 +1,6 @@
 import React from "react";
-// import TodoList from "./TodoList";
 
 export default function TodoListItem({item, onStatusCheck, onDeleteBtnClick}){
-    // const { item } = props;
-
-    
     return(
                 <li className="list-group-item" id={item.id}>
                     <div className="input-group mb-3">

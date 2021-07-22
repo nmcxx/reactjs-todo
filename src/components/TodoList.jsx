@@ -24,7 +24,7 @@ function TodoList(){
             { id: Date.now(), todo: todoName, isCheck: false },
             ...items,
           ]);
-          console.log(items);
+          setTodoName("");
     };
 
     const onStatusCheck = useCallback((id) => {
@@ -40,6 +40,13 @@ function TodoList(){
             prevState.filter(item => item.id !== id)
         );
     }, []);
+
+    const handleKeydown = (e) =>{
+        if(e.key === 'Enter')
+        {
+            onAddBtnClick();
+        }
+    };
     
     return(
         <div className="container">
@@ -52,7 +59,8 @@ function TodoList(){
                     aria-label="Việc cần làm" 
                     aria-describedby="basic-addon2"
                     value={todoName}
-                    onChange={(e) => setTodoName(e.target.value)} />
+                    onChange={(e) => setTodoName(e.target.value)}
+                    onKeyDown={handleKeydown} />
                     <div className="input-group-append">
                         <button className="btn btn-outline-secondary" type="button" onClick={onAddBtnClick}>Add</button>
                     </div>
